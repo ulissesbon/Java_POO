@@ -71,6 +71,7 @@ public class TestaAr {
             
         }while (op!=0);
 
+        sc.close();
     }
     
 }
