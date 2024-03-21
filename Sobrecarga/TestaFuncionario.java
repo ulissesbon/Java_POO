@@ -5,6 +5,6 @@ public class TestaFuncionario {
         Funcionario f = new Funcionario();
 
         f.setDataAdmi("10/02/2017");
-        System.out.println(f.getDataAdmi());
+        System.out.println(f.getDataAdmi()); 
     }
 }
