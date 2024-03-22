@@ -54,6 +54,16 @@ public class Urna {
         }
     }
 
+    public void finalizarUrna(){
+        Candidato vencedor = new Candidato(null, null, null);
+        for(int i=0; i < listaCandidatos.size() - 1; i++){
+            if(listaCandidatos.get(i).getVotos()<listaCandidatos.get(i+1).getVotos()){
+                vencedor = listaCandidatos.get(i+1);
+            }
+        }
+        System.out.println("Vencedor: "+vencedor.getNome()+"\nVotos recebidos: "+vencedor.getVotos());
+    }
+
 
 
 }

@@ -13,7 +13,7 @@ public class Eleicao {
 
         Candidato c1 = new Candidato("Ajalmar", 45, "Presidente");
         Candidato c2 = new Candidato("Pedro", 13, "Presidente");
-        Candidato c3 = new Candidato("Nivardin", 24, "Presidente");
+        Candidato c3 = new Candidato("Nivardo", 24, "Presidente");
 
         u.addCandidato(c1);
         u.addCandidato(c2);
@@ -61,6 +61,7 @@ public class Eleicao {
                 case "d":
                     System.out.println("\n\n");
                     System.out.println("################################\n\n");
+                    u.finalizarUrna();
                     System.out.println("Urna finalizada.\n\n");
                     System.out.println("################################\n\n");
                     flag=false;
@@ -70,6 +71,8 @@ public class Eleicao {
                     System.out.println("Digite uma opção válida!\n");
             }
         }
+
+
 
         sc.close();
 
