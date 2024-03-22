@@ -41,23 +41,22 @@ public class ArCondicionado {
 
     public void funcionando(){
         while(this.tempAmbiente!=this.tempAtual.floatValue()){
+            System.out.println(this.tempAmbiente);
             try {
                 Thread.sleep(1000);
             }
             catch (Exception e) {
                 System.out.println(e);
             }
-            if(this.tempAmbiente<this.tempAtual){
-                tempAmbiente+=0.5f;
+            if(this.tempAmbiente < this.tempAtual){
+                this.tempAmbiente += 0.5f;
             }
-            else if(this.tempAmbiente<this.tempAtual){
-                tempAmbiente-=0.5f;
+            else if(this.tempAmbiente > this.tempAtual){
+                this.tempAmbiente -= 0.5f;
             }
-            else if(this.tempAmbiente-this.tempAtual<0.5f){
-                this.tempAmbiente=this.tempAtual.floatValue();
+            else if((this.tempAmbiente - this.tempAtual) < 0.5f){
+                this.tempAmbiente = this.tempAtual.floatValue();
             }
-            else
-                break;
         }
     }
 
@@ -70,6 +69,7 @@ public class ArCondicionado {
         while (op) {
             if(this.tempAtual>this.tempMax || this.tempAtual<this.tempMin){
                 System.out.println("Erro! Temperatura fora dos limites da máquina!");
+                break;
             }
             else{
                 this.tempAtual = tempAtual;
