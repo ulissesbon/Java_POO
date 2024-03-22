@@ -13,7 +13,7 @@ public class Urna {
     }
 
     public void addCandidato(Candidato candidato){
-        candidato.votos=0;
+        candidato.initVotos();
         this.listaCandidatos.add(candidato);
     }
 
@@ -21,8 +21,8 @@ public class Urna {
         Boolean flag = false;
         while (true) {
             for(int i=0; i<listaCandidatos.size(); i++){
-                if(numeroCandidato == listaCandidatos.get(i).numero){
-                    listaCandidatos.get(i).votos++;
+                if(numeroCandidato == listaCandidatos.get(i).getNumero()){
+                    listaCandidatos.get(i).setVotos();
                     System.out.println("Voto computado!");
                     flag = true;
                     break;
@@ -40,9 +40,9 @@ public class Urna {
         for(int i=0; i<listaCandidatos.size(); i++){
             Candidato c=listaCandidatos.get(i);
             System.out.println();
-            System.out.println("Candidato: "+c.nome);
-            System.out.println("Número: "+c.numero);
-            System.out.println("Cargo: "+c.cargo);
+            System.out.println("Candidato: "+c.getNome());
+            System.out.println("Número: "+c.getNumero());
+            System.out.println("Cargo: "+c.getCargo());
             System.out.println();
         }
     }
@@ -50,7 +50,7 @@ public class Urna {
     public void listarVotos(){
         for(int i=0; i<listaCandidatos.size(); i++){
             Candidato c=listaCandidatos.get(i);
-            System.out.println("Candidato "+c.nome+": "+c.votos+" votos.");
+            System.out.println("Candidato "+c.getNome()+": "+c.getVotos()+" votos.");
         }
     }
 
