@@ -20,10 +20,7 @@ public class Player extends GameObject{
     }
 
     public void render(Graphics g) {
-        if(id == ID.Player)
-            g.setColor(Color.BLUE);                 //adiciona um objeto azul
-        else
-            g.setColor(Color.RED);
+        g.setColor(Color.BLUE);                 //adiciona um objeto azul
         g.fillRect(x, y, 32, 32);               //caracteristicas do objeto
     }
 

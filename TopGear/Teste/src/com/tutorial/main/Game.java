@@ -27,7 +27,7 @@ public class Game extends Canvas implements Runnable{
         r = new Random();
 
         handler.addObjeto(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player)); //adicionando objeto Player no jogo, e qual posição
-        handler.addObjeto(new Player(WIDTH/2+64, HEIGHT/2-32, ID.Player2));
+        handler.addObjeto(new InimigoBasico(WIDTH/2-32, HEIGHT/2-32, ID.InimigoBasico));
 
     }
 
