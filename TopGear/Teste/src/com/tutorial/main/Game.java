@@ -12,9 +12,10 @@ public class Game extends Canvas implements Runnable{
     
     private Thread thread;
     private boolean running = false;
+
     private Handler handler;
-    @SuppressWarnings("unused")
     private Random r;
+    private HUD hud;
 
 
     public Game(){
@@ -23,12 +24,15 @@ public class Game extends Canvas implements Runnable{
         this.addKeyListener(new KeyInput(handler));    //avisa para o programa haverá teclas para ele responder
 
         new Window(WIDTH, HEIGHT, "Top Gear de pobre", this);   //cria a janela do jogo
+
+        hud = new HUD();
         
         r = new Random();
 
-        handler.addObjeto(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player)); //adicionando objeto Player no jogo, e qual posição
-        handler.addObjeto(new InimigoBasico(WIDTH/2-32, HEIGHT/2-32, ID.InimigoBasico));
-
+        handler.addObjeto(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler)); //adicionando objeto Player no jogo, e qual posição
+        
+        handler.addObjeto(new InimigoBasico(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.InimigoBasico, handler));    //inimigo
+        
     }
 
 
@@ -48,6 +52,8 @@ public class Game extends Canvas implements Runnable{
     }
 
     public void run(){          //loop do jogo 
+        this.requestFocus();    //não precisa clicar na janela, já abre com prioridade
+
         long lastTime = System.nanoTime();  //armazena o tempo de cada iteração do loop
         double amountOfTicks = 60.0;            //  setam a taxa de atualização... 
         double ns = 1000000000 / amountOfTicks; //    ...para 60 ticks por segundo
@@ -82,6 +88,7 @@ public class Game extends Canvas implements Runnable{
 
     private void tick(){
         handler.tick();
+        hud.tick();
     }
 
     private void render(){                              //diminuindo o fps da janela
@@ -98,8 +105,20 @@ public class Game extends Canvas implements Runnable{
 
         handler.render(g);
 
+        hud.render(g);
+
         g.dispose();
         bs.show();
+    }
+
+    public static int clamp(int valor, int min, int max){   
+        if(valor >= max)
+            return valor = max;
+        else if(valor <= min)
+            return valor = min;
+        else
+            return valor;
+
     }
 
 

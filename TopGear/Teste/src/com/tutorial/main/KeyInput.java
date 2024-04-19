@@ -15,21 +15,26 @@ public class KeyInput extends KeyAdapter{
     public void keyPressed(KeyEvent e){     //é um override de KeyAdapter
         int key = e.getKeyCode();
 
-        for(int i =0 ; i < handler.objeto.size(); i++){
+        for(int i = 0 ; i < handler.objeto.size(); i++){
             GameObject objetoTemporario = handler.objeto.get(i);
 
             if(objetoTemporario.getId() == ID.Player){      //os eventos do player para cada tecla
-
+                                                            //não permite o jogador se mover além das bordas
                 if(key == KeyEvent.VK_W)
-                    objetoTemporario.setVelY(-5);
-                else if(key == KeyEvent.VK_S)
+                       objetoTemporario.setVelY(-5);
+                if(key == KeyEvent.VK_S)
                     objetoTemporario.setVelY(+5);
-                else if(key == KeyEvent.VK_A)
+                if(key == KeyEvent.VK_A)
                     objetoTemporario.setVelX(-5);
-                else if(key == KeyEvent.VK_D)
+                if(key == KeyEvent.VK_D)
                     objetoTemporario.setVelX(+5);
+
             }            
         }
+
+        if(key == KeyEvent.VK_ESCAPE)       //apertar Esc pra sair
+            System.exit(1);
+
     }
 
 
