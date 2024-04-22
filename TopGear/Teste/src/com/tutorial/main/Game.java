@@ -14,6 +14,9 @@ public class Game extends Canvas implements Runnable{
     private boolean running = false;
 
     private Handler handler;
+    private Spawn spawn;
+
+    @SuppressWarnings("unused")
     private Random r;
     private HUD hud;
 
@@ -26,12 +29,12 @@ public class Game extends Canvas implements Runnable{
         new Window(WIDTH, HEIGHT, "Top Gear de pobre", this);   //cria a janela do jogo
 
         hud = new HUD();
-        
+        spawn = new Spawn(handler, hud);
         r = new Random();
 
         handler.addObjeto(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler)); //adicionando objeto Player no jogo, e qual posição
         
-        handler.addObjeto(new InimigoBasico(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.InimigoBasico, handler));    //inimigo
+        handler.addObjeto(new InimigoBasico(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.InimigoBasico, handler));   //inimigo
         
     }
 
@@ -89,6 +92,7 @@ public class Game extends Canvas implements Runnable{
     private void tick(){
         handler.tick();
         hud.tick();
+        spawn.tick();
     }
 
     private void render(){                              //diminuindo o fps da janela
@@ -111,7 +115,7 @@ public class Game extends Canvas implements Runnable{
         bs.show();
     }
 
-    public static int clamp(int valor, int min, int max){   
+    public static float clamp(float valor, float min, float max){   
         if(valor >= max)
             return valor = max;
         else if(valor <= min)

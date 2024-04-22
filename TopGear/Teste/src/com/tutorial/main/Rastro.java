@@ -40,7 +40,7 @@ public class Rastro extends GameObject{
 
         g2d.setComposite(transparecer(alpha));
         g.setColor(color);
-        g.fillRect(x, y, width, height);
+        g.fillRect((int) x, (int) y, width, height);
 
         g2d.setComposite(transparecer(1));
     }

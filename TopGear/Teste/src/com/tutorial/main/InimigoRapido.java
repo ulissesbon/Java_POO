@@ -4,17 +4,17 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class InimigoBasico extends GameObject{
+public class InimigoRapido extends GameObject{
 
     private Handler handler;
 
-    public InimigoBasico(float x, float y, ID id, Handler handler) {
+    public InimigoRapido(float x, float y, ID id, Handler handler) {
         super(x, y, id);
 
         this.handler = handler;
 
-        velX = 5;
-        velY = 5;
+        velX = 2;
+        velY = 9;
 
     }
 
@@ -31,12 +31,12 @@ public class InimigoBasico extends GameObject{
         if(x <= 0 || x >= (Game.WIDTH - 32))
             velX *= -1;
 
-        handler.addObjeto(new Rastro((int) x, (int) y, ID.Rastro, Color.red, 16, 16, (float) 0.02, handler));
+        handler.addObjeto(new Rastro((int) x, (int) y, ID.Rastro, Color.MAGENTA, 16, 16, (float) 0.02, handler));
     }
 
 
     public void render(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(Color.MAGENTA);
         g.fillRect((int) x, (int) y, 16, 16);
     }
     

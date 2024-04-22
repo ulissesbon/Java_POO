@@ -2,8 +2,12 @@ package com.tutorial.main;
 
 public enum ID {
 
+    Tiro(),
     Player(),
     Rastro(),
-    InimigoBasico();
+    Chefao(),
+    InimigoBasico(),
+    InimigoRapido(),
+    InimigoInteligente();
 
 }

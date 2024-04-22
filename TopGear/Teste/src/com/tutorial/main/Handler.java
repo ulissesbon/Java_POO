@@ -31,4 +31,15 @@ public class Handler { //manter e renderizar todos os objetos
         this.objeto.remove(objeto);
     }
 
+    public void limparInimigos(){
+        for (int i = objeto.size() -1 ; i >= 0 ; i--){
+            GameObject objetoTemporario = objeto.get(i);   //copiando o objeto em um temporario
+
+            if (objetoTemporario.getId() != ID.Player) {
+                removerObjeto(objetoTemporario);
+            }
+        }
+    }
+    
+
 }
