@@ -33,7 +33,7 @@ public class Spawn {
                 handler.addObjeto(new InimigoRapido(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.InimigoRapido, handler));
             } else if (hud.getLevel() == 4) {   
                 handler.addObjeto(new InimigoInteligente(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.InimigoInteligente, handler));
-            }else if (hud.getLevel() == 5) {   
+            }else if (hud.getLevel() == 10) {   
                 handler.limparInimigos();
                 handler.addObjeto(new Chefao(((Game.WIDTH) / 2) - 32, -120, ID.Chefao, handler));
             }

@@ -1,14 +1,19 @@
 package com.tutorial.main;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
+
+import javax.swing.ImageIcon;
 
 public class Player extends GameObject{
 
     Random r = new Random();
     Handler handler;
+
+    private String imagem = "com\\tutorial\\main\\carro.png";
+
+    ImageIcon imagemPlayer = new ImageIcon(imagem);
 
     public Player(float x, float y, ID id, Handler handler) {
         super(x, y, id);
@@ -23,8 +28,8 @@ public class Player extends GameObject{
         y += velY;
         x += velX;
 
-        x = Game.clamp((int) x, 0, Game.WIDTH - 48);      //para impedir que o jogador ultrapasse o limite da janela de jogo
-        y = Game.clamp((int) y, 0, Game.HEIGHT - 70); 
+        x = Game.clamp((int) x, 0, Game.WIDTH - 108);      //para impedir que o jogador ultrapasse o limite da janela de jogo
+        y = Game.clamp((int) y, 0, Game.HEIGHT - 96); 
 
         colisao();
     }
@@ -63,9 +68,7 @@ public class Player extends GameObject{
     }
 
     public void render(Graphics g) {
-
-        g.setColor(Color.BLUE);                 //adiciona um objeto azul
-        g.fillRect((int) x, (int) y, 32, 32);               //caracteristicas do objeto
+        g.drawImage(imagemPlayer.getImage(), (int) x, (int) y, 100, 64, null);
     }
 
     
