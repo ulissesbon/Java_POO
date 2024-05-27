@@ -20,6 +20,12 @@ public class Game extends Canvas implements Runnable{
     private Random r;
     private HUD hud;
 
+    public enum STATE{
+        Menu,
+        Game
+    };
+
+    public STATE gameState = STATE.Menu;
 
     public Game(){
 
@@ -32,9 +38,12 @@ public class Game extends Canvas implements Runnable{
         spawn = new Spawn(handler, hud);
         r = new Random();
 
-        handler.addObjeto(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler)); //adicionando objeto Player no jogo, e qual posição
+        if(gameState == STATE.Game){
+            handler.addObjeto(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler)); //adicionando objeto Player no jogo, e qual posição
         
-        handler.addObjeto(new InimigoBasico(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.InimigoBasico, handler));   //inimigo
+            handler.addObjeto(new InimigoBasico(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.InimigoBasico, handler));   //inimigo
+        }
+
         
     }
 
@@ -91,8 +100,11 @@ public class Game extends Canvas implements Runnable{
 
     private void tick(){
         handler.tick();
-        hud.tick();
-        spawn.tick();
+        if(gameState == STATE.Game){
+            hud.tick();
+            spawn.tick();
+        }
+        
     }
 
     private void render(){                              //diminuindo o fps da janela
@@ -109,7 +121,12 @@ public class Game extends Canvas implements Runnable{
 
         handler.render(g);
 
-        hud.render(g);
+        if(gameState == STATE.Game){
+            hud.render(g);
+        }
+        else{
+            g.drawString("MENU", 100, 100);
+        }
 
         g.dispose();
         bs.show();

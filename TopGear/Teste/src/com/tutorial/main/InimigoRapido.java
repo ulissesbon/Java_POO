@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+@SuppressWarnings("unused")
 public class InimigoRapido extends GameObject{
 
     private Handler handler;
